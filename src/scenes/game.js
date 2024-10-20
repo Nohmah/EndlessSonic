@@ -4,6 +4,7 @@ import {makeMotobug} from "../entities/motobug";
 import { makeRing } from "../entities/ring";
 
 export default function game() {
+    const citySfx = k.play("chemical-ost", {volume: 0.2, loop: true});
     k.setGravity(3100);
 
     const bgPieceWidth = 1920;
@@ -35,6 +36,14 @@ export default function game() {
         ])
     ];
 
+    let score = 0;
+    let scoreMultiplier = 0;
+
+    const scoreText = k.add([
+        k.text("SCORE : 0", {font: "mania", size: 72}),
+        k.pos(20, 20),
+    ])
+
     const sonic = makeSonic(k.vec2(200, 745));
     sonic.setControls();
     sonic.setEvents();
@@ -45,16 +54,30 @@ export default function game() {
             k.destroy(enemy);
             sonic.play("jump");
             sonic.jump();
-            // TODO
+            scoreMultiplier +=1;
+            score += 10 * scoreMultiplier;
+            scoreText.text = `SCORE : ${score}`;
+            if (scoreMultiplier === 1) sonic.ringCollectUI.text= "+10";
+            if (scoreMultiplier > 1) sonic.ringCollectUI.text= `x${scoreMultiplier}`;
+        k.wait(1, () => {
+            sonic.ringCollectUI.text = "";
+        })
             return;
         };
 
         k.play("hurt", {volume: 0.3}),
-        k.go("gameover");
+        k.setData("current-score", score);
+        k.go("gameover", citySfx);
     }),
     sonic.onCollide("ring", (ring) => {
         k.play("ring", {volume: 0.3});
         k.destroy(ring);
+        score++;
+        scoreText.text = `SCORE : ${score}`;
+        sonic.ringCollectUI.text= "+1";
+        k.wait(1, () => {
+            sonic.ringCollectUI.text = "";
+        });
     })
 
     let gameSpeed = 300;
@@ -106,6 +129,7 @@ export default function game() {
     ])
 
     k.onUpdate(() =>{
+        if(sonic.isGrounded()) scoreMultiplier =0;
         if (bgPieces[1].pos.x < 0) {
             bgPieces[0].moveTo(bgPieces[1].pos.x + bgPieceWidth * 2, 0);
             bgPieces.push(bgPieces.shift());

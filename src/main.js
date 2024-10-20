@@ -1,6 +1,7 @@
 import k from './kaplayCtx'
 import mainMenu from "./scenes/mainMenu.js";
 import game from "./scenes/game.js";
+import gameover from './scenes/gameover.js';
 /* Loading Assets */
 k.loadSprite("chemical-bg", "graphics/chemical-bg.png");
 k.loadSprite("platforms", "graphics/platforms.png");
@@ -27,7 +28,7 @@ k.loadSprite("motobug", "graphics/motobug.png", {
     },
 });
 k.loadFont("mania", "fonts/mania.ttf");
-k.loadSound("city", "sounds/city.mp3");
+k.loadSound("chemical-ost", "sounds/chemical-ost.mp3");
 k.loadSound("destroy", "sounds/Destroy.wav");
 k.loadSound("hurt", "sounds/Hurt.wav");
 k.loadSound("hyper-ring", "sounds/HyperRing.wav");
@@ -39,8 +40,6 @@ k.scene("main-menu", mainMenu);
 
 k.scene("game", game);
 
-k.scene("gameover", ()=>{
-
-});
+k.scene("gameover", gameover);
 
 k.go("main-menu");
