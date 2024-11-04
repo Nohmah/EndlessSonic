@@ -89,5 +89,6 @@ export default function gameover(citySfx) {
           k.pos(k.center().x, k.center().y + 350),
         ]);
         k.onButtonPress("jump", () => k.go("game"));
+        k.onKeyPress("escape", ()=> k.go("main-menu"));
       });
 }

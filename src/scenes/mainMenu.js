@@ -1,10 +1,11 @@
-import {k, heroes} from '../kaplayCtx';
+import { k, heroes } from '../kaplayCtx';
 import { makeHero } from "../entities/hero";
 
 export default function mainMenu() {
 
   //Heroes Index
   let heroesIndex = 0;
+  k.setGravity(0);
 
   if (!k.getData("best-score")) k.setData("best-score", 0);
   k.onButtonPress("jump", () => k.go("game"));

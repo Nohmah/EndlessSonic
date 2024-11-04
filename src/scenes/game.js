@@ -6,7 +6,7 @@ import { makeObject } from "../entities/object";
 
 
 export default function game() {
-    k.setGravity(3100);
+    k.setGravity(3300);
     const bgPieceWidth = 1920;
     const platformWidth = 1280;
     const citySfx = k.play("chemical-ost", { volume: 0.2, loop: true });
@@ -107,7 +107,7 @@ export default function game() {
     })
 
     k.loop(1, () => {
-        if (gameSpeed < 2000) gameSpeed += 50;
+        gameSpeed += 50;
       });
  
  
@@ -124,7 +124,7 @@ export default function game() {
     hero.setControls();
     hero.setEvents();
     hero.onCollide("enemy", (enemy) => {
-        if (!hero.isGrounded() && enemy.enemyId != "jugglesaw") {
+        if (!hero.isGrounded() && enemy.enemyId === "motobug") {
             k.play("hyper-ring", { volume: 0.3 });
             k.destroy(enemy);
             hero.play("jump");
@@ -194,6 +194,10 @@ export default function game() {
         if (k.chance(0.1))
         {
             const enemy = makeEnemy("jugglesaw", 3, k.vec2(1950, 740));
+            handleEnemy(enemy);
+        }
+        else if (k.chance(0.3)){
+            const enemy = makeEnemy("batbrain", 3, k.vec2(1950, 550));
             handleEnemy(enemy);
         }
         else {

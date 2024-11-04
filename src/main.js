@@ -55,7 +55,31 @@ k.loadSprite("super-sonic", "graphics/heroes/super-sonic.png", {
     }
 })
 
- /* Collectables */
+/* Ennemies */
+k.loadSprite("motobug", "graphics/enemies/motobug.png", {
+    sliceX: 5,
+    sliceY: 1,
+    anims: {
+        run: { from: 0, to: 4, loop: true, speed: 8 },
+    },
+});
+
+k.loadSprite("jugglesaw", "graphics/enemies/jugglesaw.png", {
+    sliceX: 12,
+    sliceY:1,
+    anims: {
+        run: { from: 0, to: 11, loop: true, speed: 8},
+    }
+});
+
+k.loadSprite("batbrain", "graphics/enemies/batbrain.png", {
+    sliceX: 6,
+    anims: {
+        run: {from: 0, to: 5, loop: true, speed: 8}
+    }
+})
+
+/* Collectables */
 k.loadSprite("ring", "graphics/objects/ring.png", {
     sliceX: 16,
     sliceY: 1,
@@ -104,22 +128,6 @@ k.loadSprite("item-box-explosion", "graphics/objects/item-box-explosion.png", {
     }
  }); 
 
-/* Ennemies */
-k.loadSprite("motobug", "graphics/enemies/motobug.png", {
-    sliceX: 5,
-    sliceY: 1,
-    anims: {
-        run: { from: 0, to: 4, loop: true, speed: 8 },
-    },
-});
-
-k.loadSprite("jugglesaw", "graphics/enemies/jugglesaw.png", {
-    sliceX: 12,
-    sliceY:1,
-    anims: {
-        run: { from: 0, to: 11, loop: true, speed: 8},
-    }
-});
 k.loadFont("mania", "fonts/mania.ttf");
 k.loadSound("chemical-ost", "sounds/chemical-ost.mp3");
 k.loadSound("destroy", "sounds/Destroy.wav");
