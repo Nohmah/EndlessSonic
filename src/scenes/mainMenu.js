@@ -45,6 +45,7 @@ export default function mainMenu() {
   ]);
 
   let hero = makeHero(k.getData("hero") ? k.getData("hero") : heroes[0] , k.vec2(200, 745));
+  k.setData("hero", heroes[0]);
 
   /* Select character logic */ 
   k.onKeyPress("right", () => {
