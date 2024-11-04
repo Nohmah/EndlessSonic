@@ -107,9 +107,12 @@ npm run build
 
 The build files will be generated in the dist directory.
 
-
 ## Acknowledgements 🙏
 Special thanks to JSLegend for creating the tutorial that inspired this project. Check out his [Github](https://github.com/JSLegendDev/sonic-runner/commits?author=JSLegendDev) for more.
+
+## Author 👥
+
+[Nohmah](https://github.com/Nohmah)
 
 ## License ⚖️
 
