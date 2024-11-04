@@ -1,26 +1,48 @@
 # Endless Sonic 🔵🦔💨
 
-Endless Sonic is an infinite platformer game inspired by Sonic. The player controls Sonic and must avoid ennemies while collecting rings to make the best score.
+Endless Sonic is an infinite platformer game inspired by Sonic Mania. The player can control Sonic or his friends and must avoid ennemies while collecting rings to make the best score. Some power-up can appears to help the player going further in his run. 
 
-## Project Structure
+## Project Structure 📋
 ```
-endles_sonic
+endless_sonic
 ├───public
-│   │   vite.svg
+│   │   logo.png
 │   │
 │   ├───fonts
 │   │       mania.ttf
 │   │
 │   ├───graphics
-│   │       chemical-bg.png
-│   │       motobug.png
-│   │       platforms.png
-│   │       ring.png
-│   │       sonic.png
+│   │   ├───enemies
+│   │   │       jugglesaw.png
+│   │   │       motobug.png
+│   │   │
+│   │   ├───heroes
+│   │   │       knuckles.png
+│   │   │       mighty.png
+│   │   │       ray.png
+│   │   │       sonic.png
+│   │   │       super-sonic.png
+│   │   │       tails.png
+│   │   │
+│   │   ├───levels
+│   │   │       chemical-bg.png
+│   │   │       platforms.png
+│   │   │
+│   │   └───objects
+│   │           blueshield.png
+│   │           fireshield.png
+│   │           hyper-ring.png
+│   │           invincibility.png
+│   │           item-blueshield.png
+│   │           item-box-destroyed.png
+│   │           item-box-explosion.png
+│   │           item-box.png
+│   │           item-fireshield.png
+│   │           item-invincibility.png
+│   │           ring.png
 │   │
 │   └───sounds
 │           chemical-ost.mp3
-│           city.mp3
 │           Destroy.wav
 │           Hurt.wav
 │           HyperRing.wav
@@ -32,11 +54,13 @@ endles_sonic
     │   main.js
     │
     ├───entities
-    │       motobug.js
-    │       ring.js
-    │       sonic.js
+    │       enemy.js
+    │       hero.js
+    │       itembox.js
+    │       object.js
     │
     └───scenes
+            disclaimer.js
             game.js
             gameover.js
             mainMenu.js
@@ -85,7 +109,7 @@ The build files will be generated in the dist directory.
 
 
 ## Acknowledgements 🙏
-Special thanks to JSLegend for creating the tutorial that inspired this project. Check out his [Github](https://github.com/JSLegendDev/sonic-runner/commits?author=JSLegendDev) for more.*
+Special thanks to JSLegend for creating the tutorial that inspired this project. Check out his [Github](https://github.com/JSLegendDev/sonic-runner/commits?author=JSLegendDev) for more.
 
 ## License ⚖️
 

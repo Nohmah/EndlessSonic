@@ -1,7 +1,11 @@
-import k from "../kaplayCtx";
-import { makeSonic } from "../entities/sonic";
+import {k, heroes} from '../kaplayCtx';
+import { makeHero } from "../entities/hero";
 
 export default function mainMenu() {
+
+  //Heroes Index
+  let heroesIndex = 0;
+
   if (!k.getData("best-score")) k.setData("best-score", 0);
   k.onButtonPress("jump", () => k.go("game"));
 
@@ -33,7 +37,38 @@ export default function mainMenu() {
     k.pos(k.center().x, k.center().y - 200),
   ]);
 
-  makeSonic(k.vec2(200, 745));
+  k.add([
+    k.text("Press Right/Left to change character", { font: "mania", size: 28 }),
+    k.anchor("center"),
+    k.pos(k.center().x, k.center().y - 250),
+  ]);
+
+  let hero = makeHero(k.getData("hero") ? k.getData("hero") : 0 , k.vec2(200, 745));
+
+  /* Select character logic */ 
+  k.onKeyPress("right", () => {
+    hero.destroy();
+    if (heroesIndex + 1 > heroes.length -1){
+      heroesIndex = 0;
+    }
+    else{
+      heroesIndex += 1;
+    }
+    hero = makeHero(heroes[heroesIndex], k.vec2(200, 745));
+    k.setData("hero", heroes[heroesIndex]);
+  });
+
+  k.onKeyPress("left", () => {
+    hero.destroy();
+    if (heroesIndex - 1 < 0){
+      heroesIndex = heroes.length -1;
+    } else {
+      heroesIndex -= 1;
+    }
+    hero = makeHero(heroes[heroesIndex], k.vec2(200, 745));
+    k.setData("hero", heroes[heroesIndex]);
+    //use setData for the sprite to use on the game scene.
+  });
   const gameSpeed = 2000;
   k.onUpdate(() => {
     if (bgPieces[1].pos.x < 0) {

@@ -1,5 +1,12 @@
-import k from "../kaplayCtx";
+import {k} from '../kaplayCtx';
 
+/**
+ * Creates a hero entity with the specified sprite and position.
+ *
+ * @param {string} sprite - The name of the sprite to use for the hero.
+ * @param {Object} pos - The initial position of the hero.
+ * @returns {Object} The created hero entity.
+ */
 export function makeHero(sprite, pos) {
   const hero = k.add([
     k.sprite(sprite, { anim: "run" }),
@@ -9,7 +16,10 @@ export function makeHero(sprite, pos) {
     k.pos(pos),
     k.body({ jumpForce: 1700 }),
     {
-      ringCollectUI: null,
+      hasPowerUp : false, // Indicates if the hero has a power-up
+      powerUp : null, // Stores the current power-up
+      ringCollectUI: null, // UI element for displaying collected rings
+
       setControls() {
         k.onButtonPress("jump", () => {
           if (this.isGrounded()) {
