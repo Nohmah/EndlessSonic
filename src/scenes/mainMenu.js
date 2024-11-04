@@ -44,7 +44,7 @@ export default function mainMenu() {
     k.pos(k.center().x, k.center().y - 250),
   ]);
 
-  let hero = makeHero(k.getData("hero") ? k.getData("hero") : 0 , k.vec2(200, 745));
+  let hero = makeHero(k.getData("hero") ? k.getData("hero") : heroes[0] , k.vec2(200, 745));
 
   /* Select character logic */ 
   k.onKeyPress("right", () => {
